@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p class="dropdown">Привет :)</p>
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Dropdown button
+      </button>
+      <div class="menu dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+    <script>
+      /*  1. Ко всем элементам, имеющим класс "dropdown-item" добавить еще один класс "super-dropdown", необходимо использовать методы forEach и querySelectorAll и свойство classList у элементов.
+        []()
+        2. У элемента с классом btn необходимо убрать класс "btn-secondary", если он присутствует у этого элемента, либо добавить, если такого класса у элемента не было.
+        []()
+        3. Необходимо удалить класс "dropdown-menu" у элемента, у которого присутствует класс "menu".
+        [        ]()
+        4. Используя метод insertAdjacentHTML добавьте после div'a с классом "dropdown" следующую         разметку:
+        `<a href="#">link</a>`
+        [        ]()
+        5. У элемента с id "dropdownMenuButton" замените id на "superDropdown".
+        []()
+        6. Добавьте атрибут data-dd со значением 3 элементу у которого существует атрибут        "aria-labelledby" равный "dropdownMenuButton" используя dataset.
+        []()
+        7. Удалите атрибут type у элемента с классом "dropdown-toggle".*/
+
+        // Сначала получаем всех элементы с классом 'dropdown-item' используя querySelectorAll
+         const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+         // Используем метод forEach для перебора всех найденных элементов
+         dropdownItems.forEach(function(item) {
+             // К каждому элементу добавляем класс 'super-dropdown' с помощью метода add класса classList
+             item.classList.add('super-dropdown');
+         });
+
+         const btn = document.querySelector('.btn');
+         btn.classList.toggle('btn-secondary');// Используем `toggle` для добавления или удаления класса 'btn-secondary
+
+
+         const menuElement = document.querySelector('.menu.dropdown-menu');
+        // находим первый элемент, который соответствует обоим классам:
+        // Проверяем, есть ли у элемента класс 'dropdown-menu', и удаляем его
+         if (menuElement && menuElement.classList.contains('dropdown-menu')) 
+        /*эта часть условия проверяет, что переменная menuElement не равна null (то есть элемент действительно найден на странице) и можно безопасно обращаться к его свойствам и методам.*/
+           /*   Логический оператор &&:
+         - Позволяет выполнить проверку второй части условия только в том случае, если первая часть вернула значение true. */
+        /* - contains('dropdown-menu') — метод contains проверяет, существует ли указанный класс ('dropdown-menu') в списке классов элемента.*/
+
+         {
+                  menuElement.classList.remove('dropdown-menu');
+         }
+
+         const dropdown = document.querySelector('.dropdown');
+         console.log(dropdown);
+         dropdown.insertAdjacentHTML('afterend', '<a href="#">link</a>');
+
+        /*const dropdownButton = document.getElementById('dropdownMenuButton');*/
+        const dropdownButton = document.querySelector('#dropdownMenuButton');
+        dropdownButton.setAttribute('id', 'superDropdown');
+
+        const element = document.querySelector('[aria-labelledby="dropdownMenuButton"]');
+       // Устанавливаем значение data-dd через dataset
+        element.dataset.dd = '3';
+
+        const dropdowntoggle  = document.querySelector('.dropdown-toggle');
+        console.log(dropdowntoggle);
+        dropdowntoggle.removeAttribute('type');
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>

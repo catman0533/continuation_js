@@ -1,0 +1,9 @@
+.message{
+    visibility: hidden;
+}
+.messageBtn{
+    background-color: blue;
+}
+.error {
+    border: 2px solid red;
+}
